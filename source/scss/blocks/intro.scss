@@ -88,11 +88,17 @@
 
 .intro__message {
   flex: none;
+  position: relative;
+  opacity: 0;
+  bottom: -20px;
   width: 50.9rem;
   max-width: 50%;
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
+  transition-property: opacity, bottom;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
 
   @media (min-width: $stop-scaling) {
     width: 509px;
@@ -160,5 +166,12 @@
   @media (min-width: $stop-scaling) {
     margin: 0 0 0 -5px;
     font-size: 48px;
+  }
+}
+
+.active {
+  .intro__message {
+    opacity: 1;
+    bottom: 0;
   }
 }
