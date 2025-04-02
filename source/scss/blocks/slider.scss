@@ -39,6 +39,7 @@
   &:nth-child(even) {
     .slider__item-text {
       align-self: flex-end;
+      transition-delay: 0.4s;
 
       @media (max-width: $mobile) and (orientation: landscape) {
         align-self: flex-start;
@@ -91,11 +92,17 @@
 }
 
 .slider__item-text {
+  opacity: 0;
+  transform: translateX(2rem);
   margin-top: 3.6rem;
   margin-bottom: 0;
   max-width: 34rem;
   font-size: 1.8rem;
   line-height: 2rem;
+  transition-property: opacity, transform;
+  transition-duration: 0.7s;
+  transition-timing-function: ease;
+  transition-delay: 0.2s;
 
   @media (min-width: $stop-scaling) {
     margin-top: 36px;
@@ -123,6 +130,25 @@
     font-size: 1.4rem;
     line-height: 1.5rem;
   }
+}
+
+// Как убрать мелькание текста из-за движения слайда?
+.swiper-slide {
+  // transition-property: opacity;
+  // transition-duration: 0.2s;
+  // transition-timing-function: ease;
+}
+
+.swiper-slide-active,
+.swiper-slide-next {
+  .slider__item-text {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.swiper-slide:not(.swiper-slide-active):not(.swiper-slide-next) {
+  opacity: 0;
 }
 
 .slider__controls {

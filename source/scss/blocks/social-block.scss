@@ -6,6 +6,11 @@
       opacity: 1;
       pointer-events: auto;
     }
+
+    .social-block__link {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -17,6 +22,9 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
+  transition-property: color;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -35,6 +43,9 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
+    transition-property: width, height, background-color, border;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
   }
 
   svg {
@@ -66,10 +77,16 @@
       opacity: 1;
       pointer-events: auto;
     }
+
+    .social-block__link {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   &:active,
-  &:active:focus {
+  &:active:focus,
+  .social-block--active &:not(:hover) {
     color: $c-light;
 
     &::before {
@@ -89,6 +106,9 @@
   margin-top: 1.5rem;
   opacity: 0;
   pointer-events: none;
+  transition-property: opacity;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
 
   @media (min-width: $stop-scaling) {
     margin-top: 15px;
@@ -127,19 +147,18 @@
     }
   }
 
-  &:hover {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  &:focus-within {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
+  &:hover,
+  &:focus-within,
   .social-block--active & {
     opacity: 1;
     pointer-events: auto;
+  }
+
+  &:hover .social-block__link,
+  &:focus-within .social-block__link,
+  .social-block--active .social-block__link {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   li {
@@ -163,11 +182,16 @@
 .social-block__link {
   position: relative;
   display: block;
+  opacity: 0;
   width: 4rem;
   height: 4rem;
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  transition-property: color, background-color, border, opacity, transform;
+  transition-duration: 0.3s, 0.3s, 0.3s, 0.4s, 0.5s;
+  transition-timing-function: ease;
+  transform: translateY(0.7rem);
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -207,6 +231,8 @@
   }
 
   &--fb {
+    transition-delay: 0.1s;
+
     svg {
       width: 0.8rem;
       height: 1.7rem;
@@ -219,6 +245,8 @@
   }
 
   &--insta {
+    transition-delay: 0.2s;
+
     svg {
       width: 1.5rem;
       height: 1.5rem;
@@ -231,6 +259,8 @@
   }
 
   &--vk {
+    transition-delay: 0.3s;
+
     svg {
       width: 1.7rem;
       height: 1rem;
