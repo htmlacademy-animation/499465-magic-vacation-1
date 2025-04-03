@@ -364,3 +364,28 @@
 .screen--rules {
   background-color: $c-dark;
 }
+
+.background-fill-screen {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: $c-dark;
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0.1s;
+
+  &.active {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  &:not(.active) {
+    opacity: 0;
+  }
+}
