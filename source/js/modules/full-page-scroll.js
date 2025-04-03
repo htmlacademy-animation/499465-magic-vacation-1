@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import { Screens } from '../common/const';
 
 export default class FullPageScroll {
   constructor() {
@@ -7,6 +8,7 @@ export default class FullPageScroll {
     this.timeout = null;
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
+    this.backgroundFillScreen = document.querySelector(`.background-fill-screen`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
 
     this.activeScreen = 0;
@@ -41,8 +43,24 @@ export default class FullPageScroll {
 
   onUrlHashChanged() {
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
-    this.activeScreen = (newIndex < 0) ? 0 : newIndex;
-    this.changePageDisplay();
+
+    const changeDisplay = () => {
+      this.activeScreen = (newIndex < 0) ? 0 : newIndex;
+      this.changePageDisplay();
+    };
+
+    if (newIndex === Screens.PRIZES || newIndex === Screens.RULES || newIndex === Screens.GAME) {
+      this.backgroundFillScreen.classList.add(`active`);
+
+      setTimeout(() => {
+        changeDisplay();
+        this.backgroundFillScreen.classList.remove(`active`);
+      }, 400);
+
+      return;
+    }
+
+    changeDisplay();
   }
 
   changePageDisplay() {
