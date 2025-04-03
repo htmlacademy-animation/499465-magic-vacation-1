@@ -99,6 +99,7 @@
   transition-property: opacity, transform;
   transition-duration: 0.5s;
   transition-timing-function: ease;
+  transition-delay: 1.5s;
 
   @media (min-width: $stop-scaling) {
     width: 509px;
