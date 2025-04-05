@@ -1,0 +1,50 @@
+@keyframes show-from-increase {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-text {
+  from {
+    color: rgba(255, 255, 255, 0);
+  }
+  to {
+    color: rgba(255, 255, 255, 1);
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes show-block-right {
+  from {
+    opacity: 0;
+    width: 33%;
+  }
+  1% {
+    opacity: 1;
+  }
+  to {
+    width: 100%;
+  }
+}
